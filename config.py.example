@@ -1,0 +1,5 @@
+import pathlib
+
+token = "123:aaa"
+manager_id = 234
+working_dir = pathlib.Path("/path/to/something")
