@@ -44,9 +44,11 @@ async def post_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 message_line_1, tzinfo=timezone("America/New_York")
             )[0]
             text = "\n".join(message.text.split("\n")[1:])
+        else:
+            date = date.astimezone(timezone("America/New_York"))
         logging.info(date)
         # make message.date as "yyyy-mm-dd"
-        datestr = date.astimezone(timezone("America/New_York")).strftime("%Y-%m-%d")
+        datestr = date.strftime("%Y-%m-%d")
         filename = datestr + ".md"
         if not os.path.exists(config.working_dir / "_daily_log" / filename):
             file = open(config.working_dir / "_daily_log" / filename, "w")
